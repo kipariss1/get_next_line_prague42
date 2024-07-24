@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:16 by krassudi          #+#    #+#             */
-/*   Updated: 2024/07/24 17:56:40 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/07/24 20:48:41 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,7 @@
 # endif
 
 char    *get_next_line(int fd);
+char    *ft_strchr(const char *s, int c);
+char    *substr(char *s, ssize_t begin, ssize_t offset);
 
 #endif
