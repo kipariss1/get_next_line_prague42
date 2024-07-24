@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:16 by krassudi          #+#    #+#             */
-/*   Updated: 2024/07/24 14:24:32 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:56:40 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 char    *get_next_line(int fd);
-size_t  read_file_until_new_line(int fd);
 
 #endif

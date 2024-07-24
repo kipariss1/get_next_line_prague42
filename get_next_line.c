@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:12 by krassudi          #+#    #+#             */
-/*   Updated: 2024/07/24 14:30:17 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/07/24 18:26:23 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 
 char    *get_next_line(int fd)
 {
-    ssize_t res;
+    char    *buf;
+    size_t  read_bytes;
     
-    if (fd < 0 && read(fd, 0, 0) < 0)
+    buf = calloc(BUFFER_SIZE + 1, sizeof(char));
+    if (!buf)
         return (NULL);
-    res = 1;
-    while (res > 0)
-    {
-        res = read_file_until_new_line(fd);
-    }
-    return ("function is under development");
+    read_bytes = read(fd, buf, BUFFER_SIZE);
+    if (read_bytes <= 0)
+        return (free(buf), NULL);
+    // TODO: make management of the buffer and cut it by newlines
+    return (buf);
 }

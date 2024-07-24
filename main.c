@@ -7,8 +7,12 @@ int main(int ac, char *av[])
     char    *res;
 
     fd = open("test.txt", O_RDONLY);
-    res = get_next_line(fd);
-    (void)res;
+    res = malloc(1 * sizeof(char));
+    while (res)
+    {
+        free(res);
+        res = get_next_line(fd);
+    }   
     (void)ac;
     (void)av;
     return (1);
