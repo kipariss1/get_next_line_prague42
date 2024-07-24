@@ -1,0 +1,30 @@
+{
+    "configurations": [
+    {
+        "name": "run get_next_line debug",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/get_next_line",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "preLaunchTask": "compile get_next_line",
+        "postDebugTask": "clean get_next_line",
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+            {
+                "description": "Enable pretty-printing for gdb",
+                "text": "-enable-pretty-printing",
+                "ignoreFailures": true
+            },
+            {
+                "description": "Set Disassembly Flavor to Intel",
+                "text": "-gdb-set disassembly-flavor intel",
+                "ignoreFailures": true
+            }
+        ]
+    }
+    ]
+}
