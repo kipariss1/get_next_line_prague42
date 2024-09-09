@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:12 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 23:01:01 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/09 23:29:07 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,29 @@ static void init_stash(char **stash){
     *stash[0] = '\0';
 }
 
-static int  read_file(int fd, char **stash, char **buff) {
+static void init_buff(char **buff) {
+    *buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+    if (!*buff)
+        return ;
+    ft_memset(*buff, '\0', BUFFER_SIZE + 1);
+}
+
+static int  read_file(int fd, char **stash, char **buff, char **res) {
     int			read_chars;
 
-    if (!stash)
+    if (!*stash)
         init_stash(stash);
     if (ft_strchr(*stash, '\n')){
         *buff = ft_strdup(*stash);
         init_stash(stash);
         return (1);
     }
-    *buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-    if (!*buff)
-        return (0);
-    ft_memset(*buff, '\0', BUFFER_SIZE + 1);
+    init_buff(buff);
     read_chars = read(fd, *buff, BUFFER_SIZE);
-    if (read_chars <= 0)
-        return (0);
+    if (read_chars <= 0) {
+        *res = ft_strdup(*stash);
+        return (free(*buff), free(*stash), 0);
+    }
     return (1);
 }
 
@@ -50,7 +56,7 @@ char	*get_next_line(int fd)
 
     if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	while (read_file(fd, &stash, &buff))
+	while (read_file(fd, &stash, &buff, &res))
 	{
 		if (ft_strchr(buff, '\n'))
 		{
@@ -61,7 +67,7 @@ char	*get_next_line(int fd)
 			stash = substr(buff, ft_strchr(buff, '\n') - buff + 1,
 					ft_strlen(buff));
 			free(buff);
-			break ;
+            break;
 		}
 		else
 		{
