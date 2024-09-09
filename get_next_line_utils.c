@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:09 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 21:48:42 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/09 22:53:56 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,24 @@ void	*ft_memset(void *s, int c, int n)
 		*ptr++ = c;
 	}
 	return (s);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*res;
+	size_t	i;
+	size_t	n;
+
+	n = ft_strlen((char *)s);
+	res = malloc(n + 1);
+	if (!res)
+		return (0);
+	ft_memset(res, '\0', n + 1);
+	i = 0;
+	while (s[i] && i < n)
+	{
+		res[i] = s[i];
+		i++;
+	}
+	return (res);
 }
