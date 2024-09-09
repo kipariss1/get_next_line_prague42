@@ -10,7 +10,7 @@ int main(int ac, char *av[])
     res = malloc(1 * sizeof(char));
     while (res)
     {
-        free(res);
+        // free(res);
         res = get_next_line(fd);
     }   
     (void)ac;
