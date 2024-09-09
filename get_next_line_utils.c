@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:09 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 21:00:19 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:48:42 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ size_t	ft_strlen(char *str)
 	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 		i++;
 	return (i);
 }
@@ -76,4 +76,18 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	res[i] = '\0';
 	return (res);
+}
+
+void	*ft_memset(void *s, int c, int n)
+{
+	unsigned char	*ptr;
+
+	ptr = s;
+	if (n < 0)
+		return (s);
+	while (n-- > 0)
+	{
+		*ptr++ = c;
+	}
+	return (s);
 }
