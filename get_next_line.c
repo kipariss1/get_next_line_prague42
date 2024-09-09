@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:12 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 22:06:47 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/09 22:12:01 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ char	*get_next_line(int fd)
 	char		*before_nl;
 	static char	*stash;
 
-	if (!stash)
+    if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+    if (!stash)
 	{
 		stash = malloc(sizeof(char) * 1);
 		stash[0] = '\0';
 	}
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
 	while (1)
 	{
 		buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
