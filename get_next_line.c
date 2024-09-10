@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:12 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 23:29:07 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/11 00:57:06 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,17 @@ static int  read_file(int fd, char **stash, char **buff, char **res) {
     }
     init_buff(buff);
     read_chars = read(fd, *buff, BUFFER_SIZE);
-    if (read_chars <= 0) {
+    if (read_chars <= 0  && ft_strlen(*stash) > 0) {
         *res = ft_strdup(*stash);
-        return (free(*buff), free(*stash), 0);
+        free(*buff);
+        *buff = NULL;
+        free(*stash);
+        *stash = NULL;
+        return (0);
+    }
+    else if (read_chars <= 0  && !ft_strlen(*stash)) {
+        *res = NULL;
+        return (0);
     }
     return (1);
 }
@@ -63,10 +71,13 @@ char	*get_next_line(int fd)
 			before_nl = substr(buff, 0, ft_strchr(buff, '\n') + 1 - buff);
 			res = ft_strjoin(stash, before_nl);
             free(before_nl);
+            before_nl = NULL;
 			free(stash);
+            stash = NULL;
 			stash = substr(buff, ft_strchr(buff, '\n') - buff + 1,
 					ft_strlen(buff));
 			free(buff);
+            buff = NULL;
             break;
 		}
 		else
