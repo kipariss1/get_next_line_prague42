@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:12 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/13 12:52:21 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:33:21 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ static void init_buff(char **buff, char type){
     ft_memset(*buff, '\0', buff_size);
 }
 
-static void init_buffs(char **buff, char **res, char **before_nl, char **stash){
+static void init_buffs(char **buff, char **res, char **before_nl){
     *buff = NULL;
     *res = NULL;
     *before_nl = NULL;
-    *stash = NULL;
 }
 
 static void free_buff(char **buff){
@@ -71,7 +70,7 @@ char	*get_next_line(int fd)
 
     if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-    init_buffs(&buff, &res, &before_nl, &stash);
+    init_buffs(&buff, &res, &before_nl);
 	while (read_file(fd, &stash, &buff, &res))
 	{
 		if (ft_strchr(buff, '\n'))
