@@ -33,7 +33,7 @@ u
 t
  
 +-----------------------------+
-.
+.    
  
 +-----------------------------+    
 Ipsum rem aliquid impedit sed et est quis illo. Et culpa hic explicabo. Voluptas labore illo distinctio voluptate est. 
@@ -72,5 +72,5 @@ u
 t
  
 +-----------------------------+    
-. 
+.        
 +-----------------------------+         
