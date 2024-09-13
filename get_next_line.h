@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:16 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 21:47:37 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:58:17 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ size_t	ft_strlen(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_memset(void *s, int c, int n);
 char	*ft_strdup(const char *s);
+void	init_buff(char **buff);
+void	init_buffs(char **buff, char **res, char **before_nl);
+void	free_buff(char **buff);
 
 #endif

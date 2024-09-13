@@ -5,12 +5,39 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/24 10:31:09 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/09 22:53:56 by krassudi         ###   ########.fr       */
+/*   Created: 2024/09/13 16:49:15 by krassudi          #+#    #+#             */
+/*   Updated: 2024/09/13 17:06:06 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	init_buff(char **buff)
+{
+	size_t	buff_size;
+
+	if (*buff)
+		free(*buff);
+	buff_size = BUFFER_SIZE + 1;
+	*buff = malloc(sizeof(char) * buff_size);
+	if (!*buff)
+		return ;
+	ft_memset(*buff, '\0', buff_size);
+}
+
+void	init_buffs(char **buff, char **res, char **before_nl)
+{
+	*buff = NULL;
+	*res = NULL;
+	*before_nl = NULL;
+}
+
+void	free_buff(char **buff)
+{
+	if (*buff)
+		free(*buff);
+	*buff = NULL;
+}
 
 char	*ft_strchr(const char *s, int c)
 {

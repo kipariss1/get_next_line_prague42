@@ -2,7 +2,7 @@ CC 		= gcc
 CFLAGS 	= -Wall -Wextra -Werror -g -D BUFFER_SIZE=42
 
 NAME 	= get_next_line
-SRCS	= main.c get_next_line.c get_next_line_utils.c 
+SRCS	= main.c get_next_line.c get_next_line_utils.c
 
 
 ($NAME):
