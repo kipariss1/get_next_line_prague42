@@ -6,7 +6,7 @@
 /*   By: krassudi <krassudi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 10:31:12 by krassudi          #+#    #+#             */
-/*   Updated: 2024/09/13 17:19:21 by krassudi         ###   ########.fr       */
+/*   Updated: 2024/09/13 17:44:18 by krassudi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ static int	read_file(int fd, char **stash, char **buff, char **res)
 	if (read_chars <= 0 && ft_strlen(*stash) > 0)
 	{
 		*res = ft_strdup(*stash);
-		free_buff(buff);
-		free_buff(stash);
-		return (0);
+		return (free_buff(buff), free_buff(stash), 0);
 	}
 	else if (read_chars <= 0 && !ft_strlen(*stash))
 	{
 		*res = NULL;
-		return (0);
+		return (free_buff(buff), free_buff(stash), 0);
 	}
 	return (1);
 }
