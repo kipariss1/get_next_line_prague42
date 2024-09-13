@@ -1,4 +1,4 @@
-Can be compiled with "-D BUFFER_SIZE=X", where "X" is buffer size for memory allocation in bytes (can be 1 byte, can be 100 bytes)
+Can be compiled with "-D BUFFER_SIZE=X" flag, where "X" is buffer size for memory allocation in bytes (can be 1 byte, can be 100 bytes)
 
 Output of compiled main.c with test.txt:
 
